@@ -1,0 +1,4 @@
+[
+{ "keys": ["ctrl+home"], "command": "move_to", "args": {"to": "bof"} },
+{ "keys": ["ctrl+end"], "command": "move_to", "args": {"to": "eof"} }
+]

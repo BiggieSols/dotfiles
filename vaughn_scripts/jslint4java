@@ -1,0 +1,3 @@
+#!/bin/bash
+java -jar ~/data/software/jslint/jslint4java-1.4.3.jar $* | egrep -v -f ~/data/scripts/jslint_exclude_patterns.txt
+

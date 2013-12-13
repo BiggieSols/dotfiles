@@ -1,0 +1,3 @@
+# not sure whether i need these
+export VIRTUALENVWRAPPER_LOCATION=/usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=/usr/local/python

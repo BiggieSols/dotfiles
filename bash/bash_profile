@@ -1,0 +1,104 @@
+# Allow newly created files to be group r/w
+# Ubuntu and OSX default is umask 0022, this will set to 0013
+# umask u=rwx,g=rwx,o=rx
+# umask u=rwx,g=rwx,o=
+
+# Using default umask for now.
+
+
+### Switches based on local environment.
+
+export VIRTUALENVWRAPPER_LOCATION=/usr/local/share/python/virtualenvwrapper.sh
+export WORKON_HOME=~/data/virtualenvs
+
+# If we're on OSX, we want to set certain paths differently.
+if [ `uname -s` = "Darwin" ]; then
+  current_host=vaughn
+  source ~/vaughndev/bash/bash_include_osx
+else
+  # Probably using linux, so we can use different settings.
+  source ~/vaughndev/bash/bash_include_linux
+fi
+
+### Path
+
+# Brew executables and other user-added software
+PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+export PATH
+
+# Node executables
+PATH="/usr/local/share/npm/bin:${PATH}"
+export PATH
+
+# Vaughn custom scripts 
+PATH="/Users/vaughn/vaughndev/scripts:${PATH}"
+export PATH
+
+
+# PHP binaries
+PATH="/usr/local/php5/bin:${PATH}"
+export PATH
+
+
+# Node.js - if i need this later
+# NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
+
+
+### Bash prompt mods
+
+# Bash aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  . /etc/bash_completion
+fi
+
+# Menu completion
+bind '"\t":menu-complete'
+
+# Case insensitive filenames for globbing.
+# example: ls A* will show a* files as well.
+shopt -s nocaseglob
+
+# Case insensitive filenames for tab completion.
+bind 'set completion-ignore-case on'
+
+# Don't capture all history commands.
+export HISTIGNORE="&:ls:ll:[bf]g:exit:rm *"
+
+
+# Get hostname for mac and replace it with something shorter
+if [ `uname -s` = "Darwin" ] 
+  then
+    : # no-op
+  else
+    # Don't allow history capture on this machine
+    unset HISTFILE
+fi
+
+# Custom PS1
+source ~/vaughndev/bash/vaughn.ps1.bash
+
+### Other custom/program-specific settings
+
+# Add PYTHONSTARTUP so that ipython runs automatically
+export PYTHONSTARTUP=~/.ipython/pythonstartup.py
+
+
+# Virtualenvwrapper, if it exists
+# Turn this back on when using virtualenvwrapper to create virtualenvs:
+if [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
+  source $VIRTUALENVWRAPPER_LOCATION
+fi
+
+# Vagrant settings
+VAGRANT_LOG=INFO
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+

@@ -1,0 +1,46 @@
+# Add files and commands to this file, like the example:
+#   watch('file/path') { `command(s)` }
+#
+#
+$username = 'jcantrell'
+
+guard :shell do
+  $last_call = Time.now
+  $sass_call = Time.now
+
+  def sync(from, to)
+    #doing svn up will cause us to sync a ton of times, but we only need
+    #to sync the first time, so lets only sync every .5 secs at most
+    if Time.now - $last_call > 0.5
+      system("rsync -avz ./#{from}/ #{$username}@fedev.utah.trulia.com:#{to}/ --exclude '.svn' --exclude '.git' --exclude '.sass-cache'")
+      Notifier.notify("#{from} is up to date.", {title: "Sync Complete"})
+    end
+    $last_call = Time.now
+  end
+
+  def sass(base)
+    if Time.now - $sass_call > 0.5
+      system("compass compile ./#{base}/css")
+      Notifier.notify("Running Sass on #{base}", {title: "Generate CSS"})
+    end
+    $sass_call = Time.now
+  end
+
+  def sync_public(from, to, file)
+    sync(from, "/home/#{$username}/public_html/#{to}")
+  end
+
+  #common repos
+  watch( %r{^common/.*\.(php|conf)$} ) { |m| sync('common', "/home/#{$username}/common") }
+  watch( %r{^db_handle/.*\.(inc)$} ) { |m| sync('db_handle', "/home/#{$username}/db_handle") }
+  watch( %r{^oocss/.*\.(css|js)$} ) { |m| sync_public('oocss', "oocss", m[0]) }
+  watch( %r{^web/.*\.(htaccess|js|php|css|tpl|ini|html|conf)$} ) { |m| sync_public("web", "web", m[0]) }
+  watch( %r{^web/.*\.scss$} ) { |m| sass("web") }
+
+  #playground and others
+  watch( %r{^playground/.*} ) { |m| sync_public('playground', 'playground', m[0]) }
+
+  #images
+  watch( %r{^images/.*} ) { |m| sync_public('images', 'images', m[0]) }
+
+end

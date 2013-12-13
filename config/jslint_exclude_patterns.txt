@@ -1,0 +1,4 @@
+Confusing use of
+before it was defined
+# Make sure there are no blank lines at the end of this file. #
+# Otherwise egrep will exclude all lines. #

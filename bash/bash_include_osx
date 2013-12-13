@@ -1,0 +1,11 @@
+# Local versions of important executables, rather than use builtins. Brew and pip should install here by default (?)
+PATH="/usr/local/share/python:${PATH}"
+export PATH
+
+# Gnu binaries (all prefixed with 'g'
+PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH
+
+
+# Git autocompletion
+source `brew --prefix git`/etc/bash_completion.d/git-completion.bash

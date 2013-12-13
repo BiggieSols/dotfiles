@@ -1,0 +1,16 @@
+#!/bin/bash
+# Note: requires gnu-sed from homebrew (brew update; brew install gnu-sed)
+echo Replacing $1 with $2 in all subdirectories, excluding .svn.
+find . -path '*/.svn' -prune -o -type f -exec gsed -i "s/$1/$2/g" {} \;
+exit 0
+
+
+# Example:
+# Replace foo with bar
+# safe_search_replace foo bar 
+
+# Example:
+# Replace YUI.ready with $(document).ready
+# safe_search_replace "YUI\.ready" "\$(document)\.ready"
+
+

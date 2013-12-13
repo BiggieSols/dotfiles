@@ -1,0 +1,27 @@
+#!/bin/sh 
+# This script is used to push my environment (.bash_profile, etc) to a server of my choice.
+pushd . > /dev/null
+
+cd ~
+echo Setting up server $1.
+
+if [ ! -x `which ssh-copy-id` ]; then
+  echo "If you don't have ssh-copy-id installed: brew install ssh-copy-id."
+  exit
+fi
+
+ssh-copy-id $1
+
+echo Copying files over
+
+# Copy bash prompt goodness over
+ssh $1 "mkdir -p ~/vaughndev"
+ssh $1 "mkdir -p ~/.ipython"
+scp ~/vaughndev/vaughn.ps1.bash $1:~/vaughndev
+
+scp .bash_profile .bash_aliases .ackrc .gitconfig $1:~
+# scp  $1:~/.ipython
+
+
+popd > /dev/null
+

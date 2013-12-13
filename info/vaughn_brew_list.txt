@@ -1,0 +1,85 @@
+# *** Make sure you 'brew list' on an previous mac build, but install these as well.
+
+### Utilities (bash and python will install new versions)
+bash
+ack
+python
+colordiff
+wget
+figlet
+git
+pip
+gnu-sed
+ssh-copy-id
+pv # Progress bar in commandline
+
+
+# Character conversion tools
+flip
+dos2unix
+
+
+# Web stack. This will enable custom versions instead of default OSX versions.
+postgres
+apache
+php
+memcached
+mysql
+node # node.js
+
+# GIS
+postgis
+proj
+gdal
+
+
+
+
+
+# Dump of current machine:
+ack
+bash
+cabextract
+colordiff
+coreutils
+distribute
+figlet
+gdal
+gdbm
+geoip
+geos
+giflib
+git
+gnu-sed
+imagemagick
+jasper
+jpeg
+libevent
+libgpg-error
+libicns
+libmemcached
+libpng
+libtiff
+little-cms
+memcached
+mysql
+mytop
+node
+ossp-uuid
+pip
+pkg-config
+postgis
+postgresql
+proj
+pv
+python
+readline
+sqlite
+ssh-copy-id
+unrar
+watch
+wget
+wine
+winetricks
+
+

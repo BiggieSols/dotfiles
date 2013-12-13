@@ -1,0 +1,1 @@
+convert $1 jpg:- | jp2a --colors - $2 $3 $4 $5 $6
