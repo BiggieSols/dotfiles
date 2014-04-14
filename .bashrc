@@ -9,7 +9,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 source ~/.git-completion.bash
 
 PROMPT_COLOR='\e[00m\e[38;05;166m'
-export PS1='\['$PROMPT_COLOR'\][\h]: \w\$\[\e[0m\] '
+# export PS1='\['$PROMPT_COLOR'\][\h]: \w\$\[\e[0m\] '
 export EDITOR="mate -w"
 
 MILLION=1000000

@@ -8,17 +8,6 @@ alias diff="colordiff --exclude=".svn" --exclude="*.pyc" $*"
 alias df='df -ah'
 alias less='less -r'  # Will correctly interpret color sequences.
  
-# Note Do NOT alias ack! causes bad stuff to happen.  Use .ackrc instead.
-# Example:
-# alias ack="ack --follow -i -u $1 $2 $3 $4 $5 $6 $7 $8 $9"
-
-# I *do* want to alias ag though.
-# -i: case insensitive.  -f: follow symlinks
-alias ag="ag -i"
-
-### Misc stuff
-alias findapts="python /wb/src/seattle_apt/get_listings.py"
-
 ### Handy shortcuts
 
 # Recursive diff, without svn
@@ -36,79 +25,46 @@ mylsr () {
   set +f
 }
 
-# Indent xml in the clipboard
-alias indent_xml="pbpaste|xmllint --format --recover - |pbcopy"
 
-# Colorize program output.  Requires 'pygments' python module.
-alias catcolor='pygmentize -O style=monokai -f console256 -g'
 
 
 ### Edit/reload shortcuts
 alias realias="source ~/.bash_aliases"
-alias edalias="subl ~/.bash_aliases"
-alias edackrc="subl ~/.ackrc"
+alias edalias="sublime ~/.bash_aliases"
+alias edackrc="sublime ~/.ackrc"
 
-# alias n="gedit $1"
-alias n='subl $1'
-alias edhosts="subl /etc/hosts"
-alias edprofile="subl ~/.bash_profile"
+alias s='sublime $1'
+alias edhosts="sublime /etc/hosts"
+alias edprofile="sublime ~/.bash_profile"
 alias reprofile="source ~/.bash_profile"
-alias edipy="subl ~/.ipython/movity_ipython.py"
-alias edipyconf="subl ~/.ipython/ipy_user_conf.py"
 
+alias pyserv="python -m SimpleHTTPServer"
 
-### Start/stop programs
-alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias stoppostgres='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-
-
-
-### Navigation
-alias kbt="cd /wb/drop/vaughn/kb/tech"
-alias dropv="cd /wb/drop/vaughn"
-alias bm="cd /wb/drop/vaughn/travel/bm/"
-alias desktop="cd ~/Desktop"
-alias me="cd /wb/drop/vaughn/me"
-alias enc="cd ~/secure/"
-alias scratch="cd /wb/scratch/"
-alias notes="cd /wb/drop/vaughn/notes"
-alias vaughndev="cd ~/vaughndev"
-alias wedding="cd /wb/drop/AV_Turtles/wedding"
-alias baby="cd /wb/drop/AV_Turtles/baby"
-alias turtles="cd /wb/drop/AV_Turtles/"
-alias ebooks="cd /wb/drop/vaughn/ebooks"
-alias photos="cd /wb/drop/Photos"
-
-### Python helper functions
-alias rmpyc="echo Removed all .pyc files recursively.; find . -name '*.pyc' -exec rm {} \;"
-alias checkpath="python -c 'import sys, pprint; pprint.pprint(sys.path)'"
-alias checkpathbuiltin="/usr/bin/python -c 'import sys, pprint; pprint.pprint(sys.path)'"
-alias testme="python manage.py test --failfast $1 $2 $3"
-alias dtestme="python manage.py test --failfast -s $1 $2 $3"   # Debug testme
-
-# Quick helper alias to set bash environment vars.
-alias set_django_env='source ~/vaughndev/scripts/set_django_env.sh'
-
+alias irb='pry'
 
 ### Open OSX apps from the command line
 alias calc="open -a calculator"
-alias pgadmin3="open -a pgadmin3"
 alias adium="open -a adium"
 alias chrome='open -a "Google Chrome.app"'
 alias firefox="open -a firefox"
 alias 1p="open -a 1password"
 alias xee="open -a xee"
 alias jason="open -a jason"
-alias tower="open -a Tower.app"
-alias picasa="open -a Picasa.app"
 alias mou="open -a Mou.app"
 alias sqlpro="open -a Sequel\ Pro.app"
 
-### Other software shortcuts
 
-# Beyond Compare using Beyond Compare!
-alias bc='bcompare'
+alias t=tab
 
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
-alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+tab () {
+  # Will cd into current dir if called without arg.
+  osascript -e 'tell application "Terminal"' \
+            -e 'tell application "System Events" to keystroke "t" using {command down}' \
+            -e "do script \"cd `pwd` && cd ${1-.} && clear\" in front window" \
+            -e 'end tell' > /dev/null
+}
+
+
+
+
 

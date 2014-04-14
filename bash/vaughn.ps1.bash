@@ -116,7 +116,6 @@ update_prompt() {
     UNLOCKED=$(echo -e "\xf0\x9f\x94\x93")
     ROCKET=$(echo -e "\xf0\x9f\x9a\x80")
 
-
     set_new_pwd
     set_git_branch
     set_virtual_env_base
@@ -125,7 +124,7 @@ update_prompt() {
 
 #    PS1="${HOST_FOR_PROMPT} ${VIRTUAL_ENV_BASE}${GIT_BRANCH}${EMB}${NEW_PWD}${EXIT_STATUS_PROMPT}${NONE} ${ROCKET}  "
 #    PS1="${HOST_FOR_PROMPT} ${VIRTUAL_ENV_BASE}${GIT_BRANCH}${EMB}${NEW_PWD}${EXIT_STATUS_PROMPT}${NONE} \$ "
-    PS1="${HOST_FOR_PROMPT} ${VIRTUAL_ENV_BASE}${GIT_BRANCH}${EMB}${NEW_PWD}${NONE} \$ "
+    PS1="${HOST_FOR_PROMPT} ${VIRTUAL_ENV_BASE}${GIT_BRANCH}${EMC}${NEW_PWD}${NONE} \$ "
 
 }
 

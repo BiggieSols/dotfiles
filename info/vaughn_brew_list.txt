@@ -22,18 +22,7 @@ dos2unix
 # Web stack. This will enable custom versions instead of default OSX versions.
 postgres
 apache
-php
 memcached
-mysql
-node # node.js
-
-# GIS
-postgis
-proj
-gdal
-
-
-
 
 
 # Dump of current machine:
@@ -44,14 +33,10 @@ colordiff
 coreutils
 distribute
 figlet
-gdal
 gdbm
-geoip
-geos
 giflib
 git
 gnu-sed
-imagemagick
 jasper
 jpeg
 libevent
@@ -79,7 +64,5 @@ ssh-copy-id
 unrar
 watch
 wget
-wine
-winetricks
 
 

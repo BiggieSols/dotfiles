@@ -1,24 +1,27 @@
 source ~/.profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;34m\]\w\[\033[m\]\$ "
-
+# export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[15m\]\h:\[\033[33;34m\]\w\[\033[m\]\$ "
 
 # For light terminals
 export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+# export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # For dark terminals
 # export CLICOLOR=1
-# export LSCOLORS=GxFxCxDxBxegedabagaced
+export LSCOLORS=export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 
 PATH="/Users/Sol/src/dotfiles/scripts:${PATH}"
 export PATH
 
+# Coreutils (from brew)
+PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
 # Bash aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/src/dotfiles/bash/bash_aliases ]; then
+    . ~/src/dotfiles/bash/bash_aliases
 fi
 
 # Menu completion
@@ -41,3 +44,11 @@ source ~/src/dotfiles/bash/vaughn.ps1.bash
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+##
+# Your previous /Users/Sol/.bash_profile file was backed up as /Users/Sol/.bash_profile.macports-saved_2013-12-22_at_20:52:46
+##
+
+# MacPorts Installer addition on 2013-12-22_at_20:52:46: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
