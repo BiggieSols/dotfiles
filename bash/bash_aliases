@@ -1,8 +1,8 @@
 ### Vaughn's Master Alias list ###
 
 ### Program overrides
-alias ll="ls -larht --color"
-alias ls="ls --color"
+alias ll="ls -larht -G"
+alias ls="ls -G"
 alias fgrep="fgrep -i $*"
 alias diff="colordiff --exclude=".svn" --exclude="*.pyc" $*"
 alias df='df -ah'
@@ -40,7 +40,7 @@ alias reprofile="source ~/.bash_profile"
 
 alias pyserv="python -m SimpleHTTPServer"
 
-alias irb='pry'
+###alias irb='pry'
 
 ### Open OSX apps from the command line
 alias calc="open -a calculator"
@@ -52,6 +52,10 @@ alias xee="open -a xee"
 alias jason="open -a jason"
 alias mou="open -a Mou.app"
 alias sqlpro="open -a Sequel\ Pro.app"
+
+alias gs="git status"
+alias ga="git add -A"
+alias gcm="git commit -m"
 
 
 alias t=tab
